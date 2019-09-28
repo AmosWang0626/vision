@@ -17,12 +17,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * DESCRIPTION: opencv haar cascades main
+ * DESCRIPTION: opencv lbp cascades main
  *
  * @author amos.wang
  * @date 2019/9/27
  */
-public class HaarCascadesMain {
+public class LbpCascadesMain {
 
     /*
      * 启动时需配置JVM参数 -Djava.library.path=E:\app_res\opencv\build\java\x64
@@ -38,10 +38,10 @@ public class HaarCascadesMain {
 
     public static void main(String[] args) {
         // OpenCV-HAAR 级联检测xml存放目录
-        String haarcascades = "E:\\app_res\\opencv\\build\\etc\\haarcascades\\";
+        String haarcascades = "E:\\app_res\\opencv\\build\\etc\\lbpcascades\\";
 
-        // dgddy3 dgoj93 catimg 731grv wallhaven-dgddy3.jpg
-        Mat mat = Imgcodecs.imread("C:\\Users\\amos\\Pictures\\catimg.jpg");
+        // dgddy3 dgoj93 731grv g8d9z7 392qmd vgdkyl ey6jxk 73lx33
+        Mat mat = Imgcodecs.imread("C:\\Users\\amos\\Pictures\\wallhaven-73lx33.jpg");
         // 检测出的坐标集合
         List<Rect> rectList = new ArrayList<>();
         MatOfRect faceDetections = new MatOfRect();
@@ -52,10 +52,12 @@ public class HaarCascadesMain {
             return;
         }
         for (File xml : files) {
-            /// haarcascade_frontalface_alt2 正常人脸
-            // haarcascade_frontalcatface haarcascade_frontalcatface_extended 正常猫脸
+            /// 可检测出
+            // lbpcascade_frontalface 正常人脸大范围
+            // lbpcascade_frontalface_improved 正常人脸小范围
+            // lbpcascade_profileface 侧脸
             // 测试人脸识别
-            if (!xml.getName().contains("haarcascade_frontalcatface")) {
+            if (!xml.getName().contains("lbpcascade_profileface")) {
                 continue;
             }
             try {
