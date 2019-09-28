@@ -18,9 +18,7 @@ public class VisionMain {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        System.setProperty("java.library.path", "E:\\app_res\\opencv\\build\\java\\x64");
-
+    public static void main(String[] args) {
         Mat mat = Imgcodecs.imread("C:\\Users\\User\\Desktop\\pika.jpg");
         System.out.println(mat);
         // 显示图片
@@ -28,7 +26,7 @@ public class VisionMain {
         // delay等待毫秒数[0则无限等待]
         HighGui.waitKey(0);
 
-        // 两秒后关闭所有窗口
+        // 按任意键关闭显示图片窗口
         HighGui.destroyWindow("image");
         System.exit(0);
     }
